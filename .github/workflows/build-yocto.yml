@@ -193,6 +193,7 @@ jobs:
             yamlfile: ""
     uses: ./.github/workflows/compile.yml
     with:
+      name: ${{ matrix.machine }}/${{ matrix.distro.name }}${{ matrix.kernel.dirname }}
       machine: ${{matrix.machine}}
       distro_yaml: ${{matrix.distro.yamlfile}}
       distro_name: ${{matrix.distro.name}}
@@ -209,6 +210,7 @@ jobs:
       fail-fast: true
     uses: ./.github/workflows/compile.yml
     with:
+      name: qcom-armv8a/qcom-distro-sdk
       sdk: true
       target: false
       world: false
@@ -428,6 +430,7 @@ jobs:
                 yamlfile: ""
     uses: ./.github/workflows/compile.yml
     with:
+      name: ${{ matrix.machine }}/${{ matrix.distro.name }}${{ matrix.kernel.dirname }}
       enabled: ${{inputs.profile != 'pr' || (matrix.distro.name != 'debug' && matrix.distro.name != 'performance')}}
       machine: ${{matrix.machine}}
       distro_yaml: ${{matrix.distro.yamlfile}}
